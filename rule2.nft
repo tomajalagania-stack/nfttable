@@ -1,7 +1,13 @@
-table inet input {
+flush ruleset
+
+table inet filter {
 	chain input {
 		type filter hook input priority 0; policy accept;
+
+		# tu counterit daickeba xazi mashin mis qvemot kvelaferi mokveba counter_is zonashi
+
 		counter udp dport 1234 accept
-		tcp dport 22 counter accept
+		tcp dport 22 accept
+	        # counter drop
 	}
 }
