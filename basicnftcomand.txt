@@ -1,2 +1,0 @@
-nft list ruleset
-nft -f filename
