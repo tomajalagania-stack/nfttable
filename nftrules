@@ -1,0 +1,9 @@
+#!/bin/bash
+nft flush ruleset
+nft add table inet filter
+nft add chain inet filter INPUT '{ type filter hook input priority 0; policy accept; }'
+nft add chain inet filter FORWARD '{ type filter hook forward priority 0; policy accept; }'
+nft add chain inet filter OUTPUT  '{ type filter hook output priority 0; policy accept; }'
+#------- INPUT -----------
+nft add rule inet filter INPUT tcp dport { 80, 443 } accept
+nft add rule inet filter INPUT ip saddr 192.168.137.10/24 tcp dport 22 accept 
